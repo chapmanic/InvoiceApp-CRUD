@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="js/invoice-update.js"></script>
+    <%- include('./headf'); %>
+  </head>
+  <body class="container">
+    <header><%- include('./headerf'); %></header>
+
+    <main>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="jumbotron">
+            <h1>Simple CRUD invoice database</h1>
+            <p>CRUD w/ express, ejs, mongoose and mongoDB</p>
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <div class="well">
+            <h3>Invoices</h3>
+            <form action="/search-invoices" method="get">
+              <input type="text" name="query" placeholder="Search invoices..." required>
+              <button class="btn btn-info p-1" type="submit">Search</button>
+              <a class="btn btn-warning p-1" href="/">Reset</a>
+            </form>
+            <!-- Add invoice -->
+            <button
+              class="btn btn-success m-2"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Add
+            </button>
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Add Invoice
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Form starts -->
+                    <!-- form has an action pointing to the correct route, method set to POST-->
+                    <form action="/add-invoice" method="post">
+                      <div class="form-group">
+                        <label for="product">Product</label>
+                        <!-- Inputs have a name="" this is called in the route-->
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="product"
+                          name="product"
+                          aria-describedby="productHelp"
+                          placeholder="e.g. Apples"
+                        />
+                        <label for="amount">Amount</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="amount"
+                          name="amount"
+                          aria-describedby="productHelp"
+                          placeholder="e.g. 10"
+                        />
+                        <label for="sales_team">Sales Team</label>
+                        <select
+                          class="form-control"
+                          id="sales_team"
+                          name="sales_team"
+                        >
+                          <option>Team-a</option>
+                          <option>Team-b</option>
+                          <option>Team-c</option>
+                        </select>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                          Add Invoice
+                        </button>
+                      </div>
+                      <!-- Form Ends -->
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Amount</th>
+                  <th>Sales Team</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% invoices.forEach(function(invoice) { %>
+                <tr>
+                  <td><%= invoice.product %></td>
+                  <td><%= invoice.amount %></td>
+                  <td><%= invoice.sales_team %></td>
+                  <td>
+                    <!-- Update and Delete button within ForLoop ---------------------------------------------->
+                    <button
+                      class="btn btn-info m-2"
+                      data-toggle="modal"
+                      data-target="#update-modal"
+                      data-invoice-id="<%= invoice.id %>"
+                      data-product="<%= invoice.product %>"
+                      data-amount="<%= invoice.amount %>"
+                      data-sales-team="<%= invoice.sales_team %>"
+                    >
+                      Update
+                    </button>
+                    <button
+                      class="btn btn-warning delete-btn"
+                      data-toggle="modal"
+                      data-target="#delete-modal"
+                      data-invoice-id="<%= invoice._id %>"
+                    >
+                      Delete
+                    </button>
+                    <!-- Update and Delete button within ForLoop ---------------------------------------------->
+                  </td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+            <!-- update Modal ----------------------------------------------------------------->
+            <div
+              class="modal fade"
+              id="update-modal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="update-modal">
+                      Update an invoice
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Form starts here -->
+                    <form action="/update-invoice/:id" method="post">
+                      <div class="form-group">
+                        <label for="product">Product</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="product"
+                          name="product"
+                          aria-describedby="productHelp"
+                          placeholder="e.g. Apples"
+                        />
+                        <label for="amount">Amount</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="amount"
+                          name="amount"
+                          aria-describedby="productHelp"
+                          placeholder="e.g. 10"
+                        />
+                        <label for="sales_team">Sales Team</label>
+                        <select
+                          class="form-control"
+                          id="sales_team"
+                          name="sales_team"
+                        >
+                          <option>Team-a</option>
+                          <option>Team-b</option>
+                          <option>Team-c</option>
+                        </select>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="submit" class="btn btn-primary">
+                            Update changes
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          <!-- update Modal ----------------------------------------------------------------->
+            </div>
+          </div>
+          <!-- Delete Modal -------------------------------------------------------------------- -->
+          <div
+            class="modal fade"
+            id="delete-modal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="delete-modal">
+                    Delete an invoice
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Form starts here -->
+                  <form action="/delete-invoice/:id" method="post">
+                    <p>Are you sure?</p>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button type="submit" class="btn btn-danger">
+                        Delete
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Delete Modal -------------------------------------------------------------------- -->
+      </div>
+    </main>
+
+    <footer><%- include('./footerf'); %></footer>
+  </body>
+</html>
