@@ -43,7 +43,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-// Create new invoice ------------------------------------------------------------
+// Create an invoice ------------------------------------------------------------
 app.post("/add-invoice", async (req, res) => {
   // Destructuring form data from req.body
   const { product, amount, sales_team } = req.body;
@@ -64,7 +64,7 @@ app.post("/add-invoice", async (req, res) => {
   }
 });
 
-// Update the invoice -------------------------------------------------------------
+// Update an invoice -------------------------------------------------------------
 app.post("/update-invoice/:id", async (req, res) => {
   // This route form uses "invoice-update.js"
   // Create const for ID of invoice and invoice data for form
@@ -84,7 +84,7 @@ app.post("/update-invoice/:id", async (req, res) => {
   }
 });
 
-// Delete a Invoice ----------------------------------------------------------------
+// Delete an Invoice ----------------------------------------------------------------
 app.post("/delete-invoice/:id", async (req, res) => {
   // Uses invoice-update.js script
   const { id } = req.params;
