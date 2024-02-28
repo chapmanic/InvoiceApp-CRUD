@@ -15,12 +15,12 @@ This Invoice Management Application is a comprehensive solution designed to faci
     <img src="images/homesc.png" alt="Home Page Screenshot" width="700" height="600">
 
 ### Invoice Operations
-- **Create Invoices**: Users can add new invoices by submitting details about the product, amount, and sales team.
-<img src="images/addsc.png" alt="Home Page Screenshot" width="700" height="600">
-- **Update Invoices**: Existing invoices can be easily updated, ensuring that invoice data remains current and accurate.
-<img src="images/updatesc.png" alt="Home Page Screenshot" width="700" height="600">
-- **Delete Invoices**: Invoices can be removed from the database, providing a way to keep the invoicing data clean and relevant.
-<img src="images/deletesc.png" alt="Home Page Screenshot" width="700" height="600">
+- **Create Invoices**: Users can add new invoices by submitting details about the product, amount, and sales team. <br>
+    <img src="images/addsc.png" alt="Home Page Screenshot" width="700" height="600">
+- **Update Invoices**: Existing invoices can be easily updated, ensuring that invoice data remains current and accurate. <br>
+    <img src="images/updatesc.png" alt="Home Page Screenshot" width="700" height="600">
+- **Delete Invoices**: Invoices can be removed from the database, providing a way to keep the invoicing data clean and relevant. <br>
+    <img src="images/deletesc.png" alt="Home Page Screenshot" width="700" height="600">
 
 ### Advanced Search Functionality
 - **Search Invoices**: Users can search for invoices using keywords, with search capabilities designed to be flexible and user-friendly. The search is case-insensitive and can match partial entries, enhancing the application's usability.
