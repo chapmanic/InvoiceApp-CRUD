@@ -24,7 +24,7 @@ This Invoice Management Application is a comprehensive solution designed to faci
 
 ### Advanced Search Functionality
 - **Search Invoices**: Users can search for invoices using keywords, with search capabilities designed to be flexible and user-friendly. The search is case-insensitive and can match partial entries, enhancing the application's usability. <br>
-<img src="images/searchsc.png" alt="Home Page Screenshot" width="700" height="600">
+    <img src="images/searchsc.png" alt="Home Page Screenshot" width="700" height="600">
 
 ### Secure and Scalable
 - **Mongoose Integration**: Utilizes Mongoose for MongoDB object modeling, ensuring robust database interactions and data validation.
