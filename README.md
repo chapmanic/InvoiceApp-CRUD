@@ -23,7 +23,7 @@ This Invoice Management Application is a comprehensive solution designed to faci
     <img src="images/deletesc.png" alt="Home Page Screenshot" width="700" height="600">
 
 ### Advanced Search Functionality
-- **Search Invoices**: Users can search for invoices using keywords, with search capabilities designed to be flexible and user-friendly. The search is case-insensitive and can match partial entries, enhancing the application's usability.
+- **Search Invoices**: Users can search for invoices using keywords, with search capabilities designed to be flexible and user-friendly. The search is case-insensitive and can match partial entries, enhancing the application's usability. <br>
 <img src="images/searchsc.png" alt="Home Page Screenshot" width="700" height="600">
 
 ### Secure and Scalable
